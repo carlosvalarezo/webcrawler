@@ -2,7 +2,9 @@
   (:require [hiccup.page :refer [html5 include-css]]))
 
 (defn componer [lines]
-  (map (fn [line] (str  "<div> " line "</div><br/>")) lines))
+  (map (fn [line] (str "<div> " line "</div><br/>")) lines))
+
+
 
 (defn common [lines]
   (let [_lines (componer lines)]

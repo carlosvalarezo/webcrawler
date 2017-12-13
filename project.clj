@@ -6,7 +6,8 @@
                  [hiccup "1.0.5"]
                  [ring-server "0.4.0"]
                  [org.jsoup/jsoup "1.11.2"]
-                 [enlive "1.1.6"] ]
+                 [enlive "1.1.6"]
+                 [cheshire "5.8.0"]]
   :plugins [[lein-ring "0.8.12"]]
   :ring {:handler webcrawler.handler/app
          :init webcrawler.handler/init

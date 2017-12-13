@@ -1,7 +1,8 @@
 (ns webcrawler.models.data
   (:require [net.cgrand.enlive-html :as enlive]
             [webcrawler.views.layout :as layout]
-            [webcrawler.utils.util :as util]))
+            [webcrawler.utils.util :as util]
+            [cheshire.core :refer :all]))
 
 (def url "https://news.ycombinator.com/")
 
@@ -25,4 +26,4 @@
 
 (def titleUnit (map (fn [rank title source points comments] {:rank rank :title title :source source :points points :comments comments}) (getRank) (getTitle) (getSource) (getPoints) (getComments)))
 
-(defn print-headlines-and-points [] (layout/common titleUnit))
+(defn print-headlines-and-points [] (prn titleUnit) (layout/common (parse-string (generate-string titleUnit))))

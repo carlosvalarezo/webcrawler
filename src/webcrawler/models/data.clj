@@ -5,8 +5,6 @@
 
 (def url "https://news.ycombinator.com/")
 
-(def _titles [{:title ""}])
-
 (defn getUrl [url]
   (enlive/html-resource (java.net.URL. url)))
 
@@ -25,17 +23,6 @@
 (defn getComments []
   (filter util/checkNotComments (map enlive/text (enlive/select (getUrl url) [:td.subtext enlive/last-child]))))
 
-(def titleUnit (map (fn [x y] {:title x :rank y}) (getTitle) (getRank)))
+(def titleUnit (map (fn [rank title source points comments] {:rank rank :title title :source source :points points :comments comments}) (getRank) (getTitle) (getSource) (getPoints) (getComments)))
 
-;(defn getTitlesMap []
-;  (map #(prn (str %)) (getTitle)))
-
-;(defn getTitlesMap []
-;(doseq [title (getTitle)]
-;  (prn (str title))) )
-
-
-(defn print-headlines-and-points []
-  (prn titleUnit)
-  (let [lista (concat (getRank) (getTitle) (getPoints) (getSource) (getComments))]
-    (layout/common lista)))
+(defn print-headlines-and-points [] (layout/common titleUnit))

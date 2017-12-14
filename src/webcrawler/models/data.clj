@@ -35,11 +35,6 @@
                          (getRank) (getTitle) (getSource) (getPoints) (getComments)))
 
 (defn listOfNewsFirstCriteria []
-  (prn (getRank))
-  (prn (getTitle))
-  (prn (getSource))
-  (prn (getPoints))
-  (prn (getComments))
   (sort-by :comments
            (filter #(> (count (str/split (:title %) #"\s")) 5) (listOfNews))))
 

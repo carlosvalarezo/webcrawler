@@ -8,7 +8,11 @@
   (let [_lines (componer lines)]
     (html5
       (include-css "/css/screen.css")
-      [:body _lines])
+      [:body [:div {:class "leftMenu"}
+              [:div [:a { :href "/"} "Home"]]
+              [:div [:a { :href "/sortFirstCriteria"} "Sort first criteria"]]
+               [:div [:a { :href "/sortSecondCriteria"} "Sort second criteria"]]]
+               [:div {:class "container"} _lines]])
     ))
 
 

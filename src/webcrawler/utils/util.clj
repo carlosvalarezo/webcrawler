@@ -15,11 +15,10 @@
     (if (= (is-valid strNumber) true) (parse-int strNumber) 0)))
 
 (defn is-valid-points [_string]
-  (prn "string a validar " _string)
   (.contains _string "point"))
 
 (defn checkValidPoints [_string]
-  (if (= (is-valid-points _string) true) (toNumber (enlive/text _string)) 0))
+  (if (= (is-valid-points _string) true) (toNumber _string) 0))
 
 
 

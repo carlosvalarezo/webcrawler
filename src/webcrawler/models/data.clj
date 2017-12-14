@@ -27,7 +27,5 @@
 
 (defn listOfNews [] (map (fn [rank title source points comments] {:rank rank :title title :source source :points points :comments comments}) (getRank) (getTitle) (getSource) (getPoints) (getComments)))
 
-;(defn listOfNewsFirstCriteria [] (prn (filter #(> (count %) 5) (:title (listOfNews)))))
-
-(defn listOfNewsFirstCriteria [] (map #(prn (count (str/split (:title %) #"\s"))) (listOfNews)))
+(defn listOfNewsFirstCriteria [] (sort-by :comments (filter #(> (count (str/split (:title %) #"\s")) 5) (listOfNews))))
 

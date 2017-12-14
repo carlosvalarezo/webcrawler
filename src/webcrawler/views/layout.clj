@@ -4,8 +4,6 @@
 (defn componer [lines]
   (map (fn [line] (str "<div> " line "</div><br/>")) lines))
 
-
-
 (defn common [lines]
   (let [_lines (componer lines)]
     (html5

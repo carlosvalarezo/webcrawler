@@ -24,6 +24,6 @@
 (defn getComments []
   (filter util/checkNotComments (map enlive/text (enlive/select (getUrl url) [:td.subtext enlive/last-child]))))
 
-(def titleUnit (map (fn [rank title source points comments] {:rank rank :title title :source source :points points :comments comments}) (getRank) (getTitle) (getSource) (getPoints) (getComments)))
+(defn listOfNews [] (map (fn [rank title source points comments] {:rank rank :title title :source source :points points :comments comments}) (getRank) (getTitle) (getSource) (getPoints) (getComments)))
 
-(defn print-headlines-and-points [] (prn titleUnit) (layout/common (parse-string (generate-string titleUnit))))
+;(defn print-headlines-and-points [] (prn titleUnit) (layout/common (parse-string (generate-string titleUnit))))

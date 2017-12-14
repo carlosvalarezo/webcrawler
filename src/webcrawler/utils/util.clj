@@ -13,6 +13,14 @@
   (let [strNumber (str (re-find #"\d+" _string))]
     (if (= (is-valid strNumber) true) (parse-int strNumber) 0)))
 
+(defn is-valid-points [_string]
+  :aqui usar attr? y validar que exista el atributo span.class = score
+  (.contains _string "points"))
+
+(defn checkValidPoints [_string]
+  (prn (is-valid-points _string))
+  (if (= (is-valid-points _string) true) (toNumber _string) 0))
+
 
 
 

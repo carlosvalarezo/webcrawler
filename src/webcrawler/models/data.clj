@@ -20,9 +20,9 @@
   (map enlive/text (enlive/select (getUrl url) [:td.title :span :a :span.sitestr])))
 
 (defn getPoints []
-  (map util/toNumber
-       (map enlive/text
-            (enlive/select (getUrl url) [:td.subtext :span.score]))))
+  (map util/checkValidPoints
+       (map enlive/text ;aqui cambia por str para ver el html en consola
+            (enlive/select (getUrl url) [:td.subtext enlive/first-child]))))
 
 (defn getComments []
   (map util/toNumber
@@ -35,6 +35,11 @@
                          (getRank) (getTitle) (getSource) (getPoints) (getComments)))
 
 (defn listOfNewsFirstCriteria []
+  (prn (getRank))
+  (prn (getTitle))
+  (prn (getSource))
+  (prn (getPoints))
+  (prn (getComments))
   (sort-by :comments
            (filter #(> (count (str/split (:title %) #"\s")) 5) (listOfNews))))
 

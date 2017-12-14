@@ -2,13 +2,14 @@
   (:require [compojure.core :refer :all]
             [webcrawler.views.layout :as layout]
             [webcrawler.models.data :as data]
-            [webcrawler.renders.renderHome :as home]))
+            [webcrawler.renders.renderHome :as renderHome]
+            [webcrawler.renders.renderFirstSort :as firstSort]))
 
 (defn home []
-  (home/renderListOfNewsUnordered (data/listOfNews) ))
+  (renderHome/renderListOfNewsUnordered (data/listOfNews) ))
 
 (defn sortFirstCriteria []
-  ())
+  (firstSort/renderListOfFirstCriteria (data/listOfNewsFirstCriteria)))
 
 (defroutes home-routes
            (GET "/" [] (home))

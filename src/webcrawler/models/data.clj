@@ -2,7 +2,8 @@
   (:require [net.cgrand.enlive-html :as enlive]
             [webcrawler.views.layout :as layout]
             [webcrawler.utils.util :as util]
-            [cheshire.core :refer :all]))
+            [cheshire.core :refer :all]
+            [clojure.string :as str]))
 
 (def url "https://news.ycombinator.com/")
 
@@ -26,4 +27,7 @@
 
 (defn listOfNews [] (map (fn [rank title source points comments] {:rank rank :title title :source source :points points :comments comments}) (getRank) (getTitle) (getSource) (getPoints) (getComments)))
 
-;(defn print-headlines-and-points [] (prn titleUnit) (layout/common (parse-string (generate-string titleUnit))))
+;(defn listOfNewsFirstCriteria [] (prn (filter #(> (count %) 5) (:title (listOfNews)))))
+
+(defn listOfNewsFirstCriteria [] (map #(prn (count (str/split (:title %) #"\s"))) (listOfNews)))
+

@@ -1,4 +1,5 @@
-(ns webcrawler.utils.util)
+(ns webcrawler.utils.util
+  (:require [net.cgrand.enlive-html :as enlive]))
 
 (defn checkNotComments [_string]
   (not (.contains _string "ago")))
@@ -14,12 +15,11 @@
     (if (= (is-valid strNumber) true) (parse-int strNumber) 0)))
 
 (defn is-valid-points [_string]
-  :aqui usar attr? y validar que exista el atributo span.class = score
-  (.contains _string "points"))
+  (prn "string a validar " _string)
+  (.contains _string "point"))
 
 (defn checkValidPoints [_string]
-  (prn (is-valid-points _string))
-  (if (= (is-valid-points _string) true) (toNumber _string) 0))
+  (if (= (is-valid-points _string) true) (toNumber (enlive/text _string)) 0))
 
 
 

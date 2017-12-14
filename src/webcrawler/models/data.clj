@@ -20,9 +20,9 @@
   (map enlive/text (enlive/select (getUrl url) [:td.title :span :a :span.sitestr])))
 
 (defn getPoints []
-  (map util/checkValidPoints
-       (map enlive/text ;aqui cambia por str para ver el html en consola
-            (enlive/select (getUrl url) [:td.subtext enlive/first-child]))))
+  (map util/toNumber
+       (map enlive/text
+            (enlive/select (getUrl url) [:td.subtext :span.score]))))
 
 (defn getComments []
   (map util/toNumber

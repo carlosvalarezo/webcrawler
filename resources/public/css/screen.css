@@ -5,6 +5,53 @@ body {
 }
 
 h1 {
-    text-align: center;
+    text-align: left;
 }
+
+.rank{
+    color: #555555;
+    font-weight: bold;
+
+}
+
+.headline{
+    font-weight: bold;
+    color: #555555;
+}
+.source {
+    margin-left: 2px;
+}
+
+.newsUnit{
+    background: rgba(255,231,158,0.45);
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border: 0.5px solid rgba(21,21,21,1);
+}
+
+.container{
+    float: left;
+}
+.leftMenu{
+    float: left;
+    margin-right: 10px;
+    background: rgba(65,122,230,0.38);
+    padding: 5px;
+    border: 0.5px solid gray;
+}
+
+.leftMenu a{
+    text-decoration: none;
+    color: darkcyan;
+}
+
+.leftMenu a:hover{
+    text-decoration: none;
+    color: green;
+}
+.comments{
+    margin-left: 2px;
+}
+
+
 
